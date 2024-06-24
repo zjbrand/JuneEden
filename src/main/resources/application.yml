@@ -1,0 +1,20 @@
+server:
+  port: 61199
+  servlet:
+    context-path: /empthymeleaf
+    
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://localhost:3306/manageemp?characterEncoding=UTF-8
+    username: root
+    password: 123456
+    
+mybatis:
+  mapper-locations:  classpath:com/eden/mapper/*.xml
+  type-aliases-package:  com.eden.entity

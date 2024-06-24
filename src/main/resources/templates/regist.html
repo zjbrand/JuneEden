@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<title>regist</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="top_content">
+					<div id="header">
+						<div id="rightheader">
+							<p>
+								2009/11/20
+								<br />
+							</p>
+						</div>
+						<div id="topheader">
+							<h1 id="title">
+								<a href="#">main</a>
+							</h1>
+						</div>
+						<div id="navigation">
+						</div>
+					</div>
+				<div id="content">
+					<p id="whereami">
+					</p>
+					<h1>
+						新規ページ
+					</h1>
+					<div style="height: 25px;margin-left: 10px;"><h3><span id="msg" style="color: red;" th:text="${param.msg}"></span></h3></div>
+					<form th:action="@{/admin/register}" method="post">
+						<table cellpadding="0" cellspacing="0" border="0"
+							class="form_table">
+							<tr>
+								<td valign="middle" align="right">
+									管理者の名:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" class="inputgri" name="adminname"  />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									リアル名前:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" class="inputgri" name="realname"  />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									パスワード:
+								</td>
+								<td valign="middle" align="left">
+									<input type="password" class="inputgri" name="password" />
+								</td>
+							</tr>
+							<tr>
+								<td valign="middle" align="right">
+									性別:
+								</td>
+								<td valign="middle" align="left">
+									男
+									<input type="radio" class="inputgri"  name="gender" value="1" checked="checked"/>
+									女
+									<input type="radio" class="inputgri" name="gender"  value="0"/>
+								</td>
+							</tr>
+							
+							<tr>
+								<td valign="middle" align="right">
+									検証コード:
+								</td>
+								<td valign="middle" align="left">
+									<input type="text" name="code" class="inputgri" />
+								</td>
+								<td>
+									<img id="num" th:src="@{/admin/generateImageCode}" />
+									<a href="javascript:;" onclick="getImg()">コード変換する</a>
+								</td>
+								<script>
+									function getImg(){
+										let time=new Date()
+										//console.log(time.getTime())																	
+										document.getElementById('num').src='[[@{/admin/generateImageCode}]]?'+time.getTime()
+									}
+								</script>
+							</tr>
+						</table>
+						<p>
+							<input type="submit" class="button" value="提出する &raquo;" />
+						</p>
+					</form>
+				</div>
+			</div>
+			<div id="footer">
+				<div id="footer_bg">
+				ABC@126.com
+				</div>
+			</div>
+		</div>
+		<script>
+			const msg = document.querySelector('#msg')
+			setTimeout(function(){
+				msg.innerHTML=''
+			},5000)
+		</script>
+	</body>
+</html>
